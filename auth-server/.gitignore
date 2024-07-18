@@ -1,0 +1,5 @@
+#package directory
+node_modules
+.serverless
+#serverless directory
+config.json
