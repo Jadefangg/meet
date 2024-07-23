@@ -2,7 +2,7 @@
 
 const EventList = () => {
     return (
-      <div id="event-list"></div>
+        <ul id="event-list"></ul>
     );
   }
   
