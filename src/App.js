@@ -1,11 +1,12 @@
-import React from 'react';
-//import logo from './logo.svg';
+// src/App.js
+
+import EventList from './components/EventList';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-        <div id="event-list">learn react</div>
+      <EventList />
     </div>
   );
 }
