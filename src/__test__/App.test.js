@@ -1,10 +1,19 @@
 // src/__tests__/App.test.js
 
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from '../App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/); // Example of querying an element by its text
-  expect(linkElement).toBeInTheDocument();
-});//commitnpm
+describe('<App /> component', () => {
+  let AppDOM;
+  beforeEach(() => {
+    AppDOM = render(<App />).container.firstChild;
+  })
+
+  test('renders list of events', () => {
+    expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
+  });
+
+  test('render CitySearch', () => {
+    expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
+  });
+});
