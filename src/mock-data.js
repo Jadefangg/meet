@@ -740,3 +740,4 @@ const mockData=[
      },
      "eventType": "default"
     },];
+export default mockData;
