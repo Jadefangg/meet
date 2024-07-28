@@ -11,8 +11,8 @@ describe('<CitySearch /> component', () => {
   });
   test('renders text input', () => {
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
-    expect(cityTextBox).toBeInTheDocument();//the 2 expect statements are conditions that must be met for the test to pass
-    expect(cityTextBox).toHaveClass('city');//else it will return a failed test!
+    expect(cityTextBox).toBeInTheDocument();
+    expect(cityTextBox).toHaveClass('city');
   });
 
   test('suggestions list is hidden by default', () => {
