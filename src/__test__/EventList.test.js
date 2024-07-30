@@ -2,6 +2,7 @@
 
 import { render } from '@testing-library/react';
 import EventList from '../components/EventList';
+import { getEvents } from '../api';
 
 describe('<EventList /> component', () => {
   test('has an element with "list" role', () => {
