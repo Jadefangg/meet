@@ -11,9 +11,26 @@ describe('<EventList /> component', () => {
         expect(EventListComponent.queryByRole("list")).toBeInTheDocument();
     
   });
-  test('renders correct number of events', async () => {
+  test('renders correct number of events', async () => {//updated test - event id test was removed.
     const allEvents = await getEvents(); 
     EventListComponent.rerender(<EventList events={allEvents} />);
 expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.length);
+  });
+  test('renders correct event title', () => { 
+    const { queryByText } = render(<EventList events={mockData} />);
+    const event = mockData[0];
+    expect(queryByText(event.summary)).toBeInTheDocument();
+  });
+
+  test('renders correct event start time', () => {
+    const { queryByText } = render(<EventList events={mockData} />);
+    const event = mockData[0];
+    expect(queryByText(event.created)).toBeInTheDocument();
+  });
+
+  test('renders correct event location', () => {
+    const { queryByText } = render(<EventList events={mockData} />);
+    const event = mockData[0];
+    expect(queryByText(event.location)).toBeInTheDocument();
   });
 } );
