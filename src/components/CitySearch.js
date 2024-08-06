@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 
-const CitySearch = ({ allLocations }) => {
+
+const CitySearch = ({ allLocations,setCurrentCity }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  
   <input
   type="text"
   className="city"
@@ -21,7 +23,8 @@ const CitySearch = ({ allLocations }) => {
     const handleItemClicked = (event) => {
       const value = event.target.textContent;
       setQuery(value);
-      setShowSuggestions(false); // to hide the list
+      setShowSuggestions(false);
+      setCurrentCity(value);
     };
 
     setQuery(value);
