@@ -27,12 +27,13 @@ useEffect(() => {
   fetchData();
 }, [currentCity]);
 
-  return (
-    <div className="App">
-      <CitySearch />
-      <NumberOfEvents />
-      <EventList events={events} />
-    </div>
-  )};
+return (
+  <div className="App">
+    <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+    <NumberOfEvents />
+    <EventList events={events} />
+  </div>
+);
+};
 
 export default App;
