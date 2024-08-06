@@ -1,4 +1,5 @@
 // src/__tests__/EventList.test.js
+//INTEGRATION TEST - EventList.test.js BETWEEN APP AND EVENTLIST COMPONENTS.
 
 import { render } from '@testing-library/react';
 import EventList from '../components/EventList';
