@@ -10,16 +10,22 @@ import './App.css';
 
 
 const App = () => {
+  const [allLocations, setAllLocations] = useState([]);
   const [events, setEvents] = useState([]);
-const [currentNOE, setCurrentNOE] = useState(32);
+  const [currentNOE, setCurrentNOE] = useState(32);
+  const [currentCity, setCurrentCity] = useState("See all cities");
 
-const fetchData = async () => {
-  const allEvents = await getEvents();
-  setEvents(allEvents.slice(0, currentNOE));
-};
+  const fetchData = async () => {
+    const allEvents = await getEvents();
+    const filteredEvents = currentCity === "See all cities" ?
+      allEvents :
+      allEvents.filter(event => event.location === currentCity)
+    setEvents(filteredEvents.slice(0, currentNOE));
+    setAllLocations(extractLocations(allEvents));
+  }
 useEffect(() => {
   fetchData();
-}, []);
+}, [currentCity]);
 
   return (
     <div className="App">
