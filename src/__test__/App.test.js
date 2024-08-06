@@ -21,7 +21,7 @@ describe('<App /> component', () => {
   });
   
     
-  test('render NumberOfEvents', () => { 
+  test('render NumberOfEvents', () => {  // test to check if the NumberOfEvents component is rendered
     expect(AppDOM.querySelector('#numberOfevents')).toBeInTheDocument(); 
   });
-});
+});//4.5
