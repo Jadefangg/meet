@@ -44,7 +44,7 @@ describe('<EventList /> integration', () => {
     const EventListDOM = AppDOM.querySelector('#event-list');
     await waitFor(() => {
       const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBeGreaterThan(0);
+      expect(EventListItems.length).toBeGreaterThan(0); // Check if the EventList has rendered at least one event
     });
   });
 
