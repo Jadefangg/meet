@@ -34,4 +34,8 @@ expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.lengt
     const event = mockData[0];
     expect(queryByText(event.location)).toBeInTheDocument();
   });
-} );
+} );//Eventlist component test ends here
+
+describe('<EventList /> integration', () => {
+
+});
