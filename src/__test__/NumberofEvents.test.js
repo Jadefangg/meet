@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import mockData from '../mock-data.js';
-import Event from '../components/Event';
+import Eventlist from '../components/Event.js/index.js';
 import NumberOfEvents from '../components/NumberOfEvents.js';
 
 describe('<NumberOfEvents /> component', () => {
@@ -12,7 +12,7 @@ describe('<NumberOfEvents /> component', () => {
     
     test('default value of the textbox is 32', () => { //test to check if the default value of the textbox is 32
         const { getByRole } = render(<NumberOfEvents />);
-        const input = getByRole('textbox');
+        const input = getByRole('input');
         expect(input.value).toBe('32');
     });
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function NumberOfEvents() {
+const NumberOfEvents = () => {
   return (
     <div>
- <input type="text" role='input'></input>
+      <input type="text" role="input" />
     </div>
-  )
-}
+  );
+};
+
+export default NumberOfEvents;
