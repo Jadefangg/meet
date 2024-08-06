@@ -8,7 +8,7 @@ import { extractLocations, getEvents } from '../api';
 describe('<CitySearch /> component', () => {
   let CitySearchComponent;
   beforeEach(() => {
-    CitySearchComponent = render(<CitySearch />);
+    CitySearchComponent = render(<CitySearch allLocations={[]}/>);
   });
   test('renders text input', () => {
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
