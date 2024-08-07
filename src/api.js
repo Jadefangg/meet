@@ -23,3 +23,7 @@ export const extractLocations = (events) => {
 export const getEvents = async () => {
   return mockData;
 };
+
+export const getAccessToken = async () => {
+  const accessToken = localStorage.getItem('access_token');
+};
