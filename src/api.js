@@ -36,8 +36,22 @@ export const getEvents = async () => {
 
   const token = await getAccessToken();
 
+  const removeQuery = () => { //this function will remove all query parameters from the URL.
+    let newurl;
+    if (window.history.pushState && window.location.pathname) {
+      newurl =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname;
+      window.history.pushState("", "", newurl);
+    } else {
+      newurl = window.location.protocol + "//" + window.location.host;
+      window.history.pushState("", "", newurl);
+    }
+
   if (token) {
-    removeQuery();
+    removeQuery(); 
     const url =  "YOUR_GET_EVENTS_API_ENDPOINT" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
