@@ -48,7 +48,7 @@ export const getEvents = async () => {
     } else {
       newurl = window.location.protocol + "//" + window.location.host;
       window.history.pushState("", "", newurl);
-    }
+    }}
 
   if (token) {
     removeQuery(); 
@@ -59,6 +59,16 @@ export const getEvents = async () => {
       return result.events;
     } else return null; 
   }
+};
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const response = await fetch(
+    'YOUR_GET_ACCESS_TOKEN_ENDPOINT' + '/' + encodeCode
+  );
+  const { access_token } = await response.json();
+  access_token && localStorage.setItem("access_token", access_token);
+
+  return access_token;
 };
 
 export const getAccessToken = async () => {
