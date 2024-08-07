@@ -20,14 +20,19 @@ export const extractLocations = (events) => {
  *
  * This function will fetch the list of all events
  */
+
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
+};
+
 export const getEvents = async () => {
-  const checkToken = async (accessToken) => {
-    const response = await fetch(
-      `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-    );
-    const result = await response.json();
-    return result;
-  };
+  if (window.location.href.startsWith('http://localhost')) {
+    return mockData;
+  }
 };
 
 export const getAccessToken = async () => {
