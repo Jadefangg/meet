@@ -30,8 +30,20 @@ const checkToken = async (accessToken) => {
 };
 
 export const getEvents = async () => {
-  if (window.location.href.startsWith('http://localhost')) {
+  if (window.location.href.startsWith("http://localhost")) {
     return mockData;
+  }
+
+  const token = await getAccessToken();
+
+  if (token) {
+    removeQuery();
+    const url =  "YOUR_GET_EVENTS_API_ENDPOINT" + "/" + token;
+    const response = await fetch(url);
+    const result = await response.json();
+    if (result) {
+      return result.events;
+    } else return null; 
   }
 };
 
