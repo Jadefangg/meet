@@ -1,5 +1,7 @@
 // src/api.js
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  CHANGE ALL PLACEHOLDERS  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 import mockData from './mock-data';
 
 /**
@@ -89,5 +91,5 @@ export const getAccessToken = async () => {
     }
     return code && getToken(code);    //if there is a code, get the token
   }
-  return accessToken;     
+  return accessToken;     //if there is a token, return it
 };
