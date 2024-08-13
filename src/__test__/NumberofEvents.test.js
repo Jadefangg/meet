@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import mockData from '../mock-data.js';
-import Eventlist from '../components/Event.js/index.js';
+//import Eventlist from '../components/Event.js/index.js';
 import NumberOfEvents from '../components/NumberOfEvents.js';
 
 describe('<NumberOfEvents /> component', () => {
@@ -10,11 +10,11 @@ describe('<NumberOfEvents /> component', () => {
         expect(NumberofEventsComponent.queryByRole("textbox")).toBeInTheDocument();
     });
     
-    test('default value of the textbox is 32', () => { //test to check if the default value of the textbox is 32
+    test('default value of the textbox is 32', () => {
         const { getByRole } = render(<NumberOfEvents />);
-        const input = getByRole('input');
-        expect(input.value).toBe('32');
-    });
+        const input = getByRole('spinbutton'); // 'spinbutton' is the role for input[type="number"]
+        expect(input).toHaveValue(32);
+      });
 
     test('value of the textbox changes when user types in it', async () => { //test to check if the value of the textbox changes when the user types in it
         const { getByRole } = render(<NumberOfEvents />);

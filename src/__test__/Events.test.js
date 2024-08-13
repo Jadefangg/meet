@@ -1,12 +1,22 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import mockData from '../mock-data';
+import mockData from '../mock-data.js';
 import Event from '../components/Event';
+
+console.log('mockData:', mockData); // Log mockData for debugging
+
 
 describe('<Event /> component', () => {
   test('has summary', () => {
-    const EventComponent = render(<Event event={mockData[0]} />);
-    expect(EventComponent.queryByText(mockData[0].summary)).toBeInTheDocument();
+    // Ensure mockData is not empty
+    expect(mockData).not.toHaveLength(0);
+    expect(mockData).toBeDefined();
+
+    const event = mockData[0];
+    const { getByText } = render(<Event event={event} />);
+    
+    // Check if the summary is in the document
+    expect(getByText(event.summary)).toBeInTheDocument();
   });
 
   test('has location', () => {

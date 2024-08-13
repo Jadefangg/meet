@@ -25,13 +25,13 @@ describe('<CitySearch /> component', () => {
     const user = userEvent.setup();
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.click(cityTextBox);
-       // the suggestion's textContent look like this: "Berlin, Germany"
-       const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
+    // the suggestion's textContent look like this: "Berlin, Germany"
+    const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
+    await user.click(BerlinGermanySuggestion);
+    expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
+  });
+  
 
-       await user.click(BerlinGermanySuggestion);
-   
-       expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
-     });
   test('updates list of suggestions correctly when user types in city textbox', async () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
