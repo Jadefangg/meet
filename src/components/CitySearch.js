@@ -2,35 +2,27 @@
 
 import { useState } from "react";
 
-
-const CitySearch = ({ allLocations,setCurrentCity }) => {
+const CitySearch = ({ allLocations, setCurrentCity }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  
-  <input
-  type="text"
-  className="city"
-          placeholder="Search for a city"
-  value={query}
-  onFocus={() => setShowSuggestions(true)}
-/>
+
   const handleInputChanged = (event) => {
     const value = event.target.value;
     const filteredLocations = allLocations ? allLocations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     }) : [];
-    const handleItemClicked = (event) => {
-      const value = event.target.textContent;
-      setQuery(value);
-      setShowSuggestions(false);
-      setCurrentCity(value);
-    };
-
     setQuery(value);
     setSuggestions(filteredLocations);
-  };    
-  //-------------------------------------//
+  };
+
+  const handleItemClicked = (event) => {
+    const value = event.target.textContent;
+    setQuery(value);
+    setShowSuggestions(false);
+    setCurrentCity(value);
+  };
+
   return (
     <div id="city-search">
       <input
@@ -53,5 +45,7 @@ const CitySearch = ({ allLocations,setCurrentCity }) => {
         : null
       }
     </div>
- )};
- export default CitySearch;
+  );
+};
+
+export default CitySearch;

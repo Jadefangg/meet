@@ -1,14 +1,16 @@
 // src/__tests__/App.test.js
 
-import { render,within } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import EventList from '../components/EventList';
+import { getEvents } from '../api'; // Ensure this import is correct
 
 describe('<App /> component', () => {
   let AppDOM;
   beforeEach(() => {
     AppDOM = render(<App />).container.firstChild;
-  })
+  });
 
   test('renders list of events', () => {
     expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
@@ -19,13 +21,11 @@ describe('<App /> component', () => {
     expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
     console.log(EventList);
   });
-  
-    
-  test('render NumberOfEvents', () => {  // test to check if the NumberOfEvents component is rendered
-    expect(AppDOM.querySelector('#numberOfevents')).toBeInTheDocument(); 
-  });
-});//4.5
 
+  test('render NumberOfEvents', () => {
+    expect(AppDOM.querySelector('#numberOfevents')).toBeInTheDocument();
+  });
+});
 
 describe('<App /> integration', () => {
   test('renders a list of events matching the city selected by the user', async () => {
@@ -41,7 +41,7 @@ describe('<App /> integration', () => {
     await user.click(berlinSuggestionItem);
 
     const EventListDOM = AppDOM.querySelector('#event-list');
-    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');   
+    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
 
     const allEvents = await getEvents();
     const berlinEvents = allEvents.filter(
@@ -52,4 +52,5 @@ describe('<App /> integration', () => {
     allRenderedEventItems.forEach(event => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
-  })});
+  });
+});

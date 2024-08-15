@@ -15,7 +15,7 @@ import mockData from './mock-data';
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
-  return locations;
+  return locations; //return the array of unique locations mapped from the events array which was passed as an argument.
 };
 
 /**

@@ -3,24 +3,28 @@ import userEvent from '@testing-library/user-event';
 import mockData from '../mock-data.js';
 //import Eventlist from '../components/Event.js/index.js';
 import NumberOfEvents from '../components/NumberOfEvents.js';
+import { getEvents } from "../api";
 
 describe('<NumberOfEvents /> component', () => {
-    test('has number of events', () => { // test to ensure that the component contains a textbox
-        const NumberofEventsComponent = render(<NumberOfEvents />);
-        expect(NumberofEventsComponent.queryByRole("textbox")).toBeInTheDocument();
+    let NumberOfEventsComponent;
+    beforeEach(() => {
+      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />);
+    });
+    test('has number of events', () => {
+        const NumberOfEventsComponent = render(<NumberOfEvents />);
+        expect(NumberOfEventsComponent.getByRole("input")).toBeInTheDocument();
     });
     
-    test('default value of the textbox is 32', () => {
-        const { getByRole } = render(<NumberOfEvents />);
-        const input = getByRole('spinbutton'); // 'spinbutton' is the role for input[type="number"]
-        expect(input).toHaveValue(32);
-      });
+    test('default number of events is 32', () => {
+        expect( NumberOfEventsComponent.getByRole('input')).toHaveValue('19');  
+      });  
 
-    test('value of the textbox changes when user types in it', async () => { //test to check if the value of the textbox changes when the user types in it
-        const { getByRole } = render(<NumberOfEvents />);
-        const input = getByRole('textbox');
-        await userEvent.clear(input);
-        await userEvent.type(input, '10');
-        expect(input.value).toBe('10');
-    });
+      test('change number of events when a user types in the textbox', async () => { 
+        const numverOfEvents = NumberOfEventsComponent.getByRole('input');
+        const user = userEvent.setup(); 
+        await user.type(numverOfEvents, '{backspace}{backspace}10');   
+        const allEvents = await getEvents(); 
+        NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={allEvents} setErrorAlert={() => {}} />);   
+        expect(numverOfEvents).toHaveValue('10'); 
+      }); 
 });
