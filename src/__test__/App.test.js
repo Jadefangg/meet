@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import EventList from '../components/EventList';
 import { getEvents } from '../api'; // Ensure this import is correct
+//import NumberOfEvents from '../components/NumberOfEvents';
 
 describe('<App /> component', () => {
   let AppDOM;
@@ -22,8 +23,8 @@ describe('<App /> component', () => {
     console.log(EventList);
   });
 
-  test('render NumberOfEvents', () => {
-    expect(AppDOM.querySelector('#numberOfevents')).toBeInTheDocument();
+  test('render List of Events', () => {
+    expect(AppDOM.querySelector('#NumberOfEvents')).toBeInTheDocument();
   });
 });
 
