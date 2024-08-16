@@ -14,7 +14,7 @@ defineFeature(feature, test => {
       given('user hasn’t searched for any city', () => {
 
       });
-    let AppComponent
+    let AppComponent;
       when('the user opens the app', () => {
           AppComponent = render(<App />);
         });
@@ -32,15 +32,24 @@ defineFeature(feature, test => {
   
       });
 
-  
+  //--------------------------------------------------------------------------------
+
     test(`user should see a list of suggestions when they search for a city.`, ({ given, when, then }) => {
+      let AppComponent;
       given('the main page is open', () => {
+        AppComponent=render(<App />);
   
       });
-  
-      when('user starts typing in the city textbox', () => {
-  
+      let CitySearchDOM;
+      when('user starts typing in the city textbox',async () => {
+        const user= userEvent.setup();
+        const AppDOM = AppComponent.container.firstChild;
+        CitySearchDOM= AppDOM.querySelector('#city-search');
+        const citySearchInput = within(CitySearchDOM).queryByRole('textbox');
+          await user.type(citySearchInput, 'Berlin'); 
       });
+  
+      
   
       then('the user should receive a list of cities (suggestions) that match what they’ve typed', () => {
   
@@ -70,4 +79,4 @@ defineFeature(feature, test => {
       });
     });
   
-    
+  });
