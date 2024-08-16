@@ -80,16 +80,23 @@ defineFeature(feature, test => {
         expect(suggestionListItems).toHaveLength(2);
       });
   
-      when('the user selects a city (e.g., “Berlin, Germany”) from the list', () => {
-  
+      when('the user selects a city (e.g., “Berlin, Germany”) from the list', async () => {
+        const user = userEvent.setup();
+        await user.click(suggestionListItems[0]);
       });
   
       then('their city should be changed to that city (i.e., “Berlin, Germany”)', () => {
-  
+        expect(citySearchInput.value).toBe('Berlin, Germany');
       });
+      and('the user should receive a list of upcoming events in that city', async () => {
+        const EventListDOM = AppDOM.querySelector('#event-list');
+        const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        const allEvents = await getEvents();
   
-      and('the user should receive a list of upcoming events in that city', () => {
-  
+        // filtering the list of all events down to events located in Germany
+        // citySearchInput.value should have the value "Berlin, Germany" at this point
+        const berlinEvents = allEvents.filter(event => event.location === citySearchInput.value)
+        expect(EventListItems).toHaveLength(berlinEvents.length);
       });
     });
   
