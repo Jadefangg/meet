@@ -74,9 +74,10 @@ defineFeature(feature, test => {
         citySearchInput = within(CitySearchDOM).queryByRole('textbox');  
         await user.type(citySearchInput, "Berlin");
       });
-  
+      let suggestionListItems;
       and('the list of suggested cities is showing', () => {
-  
+        suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem'); 
+        expect(suggestionListItems).toHaveLength(2);
       });
   
       when('the user selects a city (e.g., “Berlin, Germany”) from the list', () => {
