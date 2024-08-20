@@ -4,7 +4,7 @@ import { loadFeature, defineFeature } from 'jest-cucumber';
 import { render } from '@testing-library/react';
 import App from '../App';
 import { getEvents } from '../mock-data';
-import { render, within, waitFor } from '@testing-library/react';
+import { within, waitFor } from '@testing-library/react';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
@@ -21,7 +21,7 @@ defineFeature(feature, test => {
           AppComponent = render(<App />);
         });
   
-      });
+      
   
       then('the user should see the list of upcoming events', async () => {
         const AppDOM = AppComponent.container.firstChild;
@@ -82,7 +82,7 @@ defineFeature(feature, test => {
   
       when('the user selects a city (e.g., “Berlin, Germany”) from the list', async () => {
         const user = userEvent.setup();
-        await user.click(suggestionListItems[0]);
+        await user.click(suggestionListItems[0]);//integration tetsing
       });
   
       then('their city should be changed to that city (i.e., “Berlin, Germany”)', () => {
@@ -100,4 +100,4 @@ defineFeature(feature, test => {
       });
     });
   
-  });
+  
