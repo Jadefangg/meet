@@ -15,4 +15,4 @@ console.error = (...args) => {
   const ignoreMessage = MESSAGES_TO_IGNORE.find(message => args.toString().includes(message));
   if (!ignoreMessage) originalError(...args);
 }
-jest.setTimeout(300000);
+jest.setTimeout(40000); //TIME-limit has been increased but to no avail
