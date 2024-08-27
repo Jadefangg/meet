@@ -7,6 +7,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations,getEvents } from './api';
 
 import './App.css';
+import { InfoAlert } from './components/Alert';
 
 
 const App = () => {
@@ -36,5 +37,18 @@ return (
   </div>
 );
 };
+return (
+  <div className="App">
+    <div className="alerts-container">
+      {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+    </div>
+    <CitySearch
+      allLocations={allLocations}
+      setCurrentCity={setCurrentCity}
+      setInfoAlert={setInfoAlert} />
+    <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+    <EventList events={events} />
+  </div>
+);
 
 export default App; //OOP NEEDS TO BE ADDED
