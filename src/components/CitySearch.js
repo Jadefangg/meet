@@ -1,6 +1,6 @@
 // src/components/CitySearch.js
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);

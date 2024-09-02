@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react';
 import CitySearch from './components/CitySearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
-import { extractLocations,getEvents } from './api';
+import { extractLocations, getEvents } from './api';
 
 import './App.css';
-import { InfoAlert } from './components/Alert';
-
+import { InfoAlert } from './components/Alerts';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
@@ -21,34 +20,29 @@ const App = () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
       allEvents :
-      allEvents.filter(event => event.location === currentCity)
+      allEvents.filter(event => event.location === currentCity);
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
-  }
-useEffect(() => {
-  fetchData();
-}, [currentCity]);
+  };
 
-return (
-  <div className="App">
-    <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-    <NumberOfEvents currentNOE = {currentNOE} setCurrentNOE={setCurrentNOE} />
-    <EventList events={events} />
-  </div>
-);
-};
-return (
-  <div className="App">
-    <div className="alerts-container">
-      {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+  useEffect(() => {
+    fetchData();
+  }, [currentCity]);
+
+  return (
+    <div className="App">
+      <div className="alerts-container">
+        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+      </div>
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={setCurrentCity}
+        setInfoAlert={setInfoAlert}
+      />
+      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />
+      <EventList events={events} />
     </div>
-    <CitySearch
-      allLocations={allLocations}
-      setCurrentCity={setCurrentCity}
-      setInfoAlert={setInfoAlert} />
-    <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-    <EventList events={events} />
-  </div>
-);
+  );
+};
 
-export default App; //OOP NEEDS TO BE ADDED
+export default App;
