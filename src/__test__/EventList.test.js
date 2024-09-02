@@ -49,7 +49,7 @@ describe('<EventList /> integration', () => {
     const EventListDOM = AppDOM.querySelector('#event-list');
     await waitFor(() => {
       const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBe(19);
+      expect(EventListItems.length).toBe(19); // 19 is the default number of events to be displayed
     });
   });
 });
