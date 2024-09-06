@@ -26,6 +26,5 @@ serviceWorkerRegistration.register();
 reportWebVitals();
 
 console.log('Test Atatus Setup');
-atatus.notify(new Error('Test Atatus Setup'));
-console.log('Test Atatus Setup Done');
+atatus.notify(new Error('Test Atatus Setup'));console.log('Test Atatus Setup Done');
 
