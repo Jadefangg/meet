@@ -9,7 +9,7 @@ class Alert extends Component {
     this.bgColor = null;
   }
 
-  getStyle = () => {
+  getStyle = () => { //this is the method that will be called to get the style of the alert
     return {
       color: this.color,
       backgroundColor: this.bgColor,
@@ -41,4 +41,18 @@ class InfoAlert extends Alert {
     this.bgColor = 'rgb(220, 220, 255)'; // light blue
   }
 } 
+class WarningAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = 'orange';
+  }
+}
+class ErrorAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = 'red';
+  }
+}
 export { InfoAlert };
+export { WarningAlert };
+export { ErrorAlert };
