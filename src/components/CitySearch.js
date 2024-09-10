@@ -3,7 +3,7 @@
 import { useState,useEffect } from "react";
 
 
-const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert,setWarningAlert,setErrorAlert }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -13,7 +13,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     setSuggestions(allLocations);
   }, [`${allLocations}`]);
 
-  const handleInputChanged = (event) => {
+  const handleInputChanged = (event) => { //Alerts called here
     const value = event.target.value;
     const filteredLocations = allLocations ? allLocations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
@@ -29,6 +29,21 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
       infoText = ""
     }
     setInfoAlert(infoText);
+    let warningText;
+    if (value === "") {
+      warningText = "If you want a particular city please enter a city name"
+    } else {
+      warningText = ""
+    }
+    //setWarningAlert(warningText);
+    //let errorText;
+    //if (value === "See all cities") {
+     // errorText = "Please select a city"
+    //} else {
+      //errorText = ""
+    //}
+    //setErrorAlert(errorText);
+    
   };
 
   const handleItemClicked = (event) => {
