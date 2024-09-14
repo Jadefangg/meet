@@ -35,14 +35,14 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert,setWarningAlert
     } else {
       warningText = ""
     }
-    //setWarningAlert(warningText);
-    //let errorText;
-    //if (value === "See all cities") {
-     // errorText = "Please select a city"
-    //} else {
-      //errorText = ""
-    //}
-    //setErrorAlert(errorText);
+    setWarningAlert(warningText);
+    let errorText;
+    if (value === "See all cities") {
+     errorText = "Please select a city"
+    } else {
+      errorText = ""
+    }
+    setErrorAlert(errorText);
     
   };
 
