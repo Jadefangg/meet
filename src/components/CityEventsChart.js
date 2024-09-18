@@ -15,7 +15,7 @@ const CityEventsChart = ({ allLocations, events }) => {
 
   useEffect(() => {
     setData(getData());
-  }, [`${events}`]);
+  }, [`${data}`]);
 
   const getData = () => {
     const data = allLocations.map((location) => {
@@ -25,6 +25,25 @@ const CityEventsChart = ({ allLocations, events }) => {
     })
     return data;
   };
+
+  return (
+    <ResponsiveContainer width="99%" height={400}>
+      <ScatterChart
+        margin={{
+          top: 20,
+          right: 20,
+          bottom: 20,
+          left: 20,
+        }}
+      >
+        <CartesianGrid />
+        <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+        <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+        <Scatter name="A school" data={data} fill="#8884d8" />
+      </ScatterChart>
+    </ResponsiveContainer>
+  );
 }
 
 export default CityEventsChart;
