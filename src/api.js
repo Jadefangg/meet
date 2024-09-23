@@ -1,43 +1,46 @@
 // src/api.js
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  CHANGE ALL PLACEHOLDERS  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 import mockData from './mock-data';
 
 /**
- * Extracts unique locations from events.
- * @param {Array} events - Array of event objects.
- * @returns {Array} - Array of unique locations.
+ *
+ * @param {*} events:
+ * The following function should be in the “api.js” file.
+ * This function takes an events array, then uses map to create a new array with only locations.
+ * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
+ * The Set will remove all duplicates from the array.
  */
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
-  return locations;
+  return locations; //return the array of unique locations mapped from the events array which was passed as an argument.
 };
 
 /**
- * Checks the validity of the access token.
- * @param {string} accessToken - The access token to check.
- * @returns {Object} - The result of the token check.
+ *
+ * This function will fetch the list of all events
  */
+
 const checkToken = async (accessToken) => {
   const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}` //this is the endpoint to check the token
   );
   const result = await response.json();
   return result;
 };
 
-/**
- * Fetches events from the API.
- * @returns {Array} - Array of event objects.
- */
 export const getEvents = async () => {
-  if (window.location.href.startsWith("http://localhost")) {
+    // Temporarily use mock data for both local and live environments
+  if (window.location.href.startsWith("http://localhost") || window.location.href.startsWith("https://jadefangg"))
+    {
     return mockData;
   }
 
   const token = await getAccessToken();
 
-  const removeQuery = () => {
+  const removeQuery = () => { //this function will remove all query parameters from the URL.
     let newurl;
     if (window.history.pushState && window.location.pathname) {
       newurl =
@@ -49,29 +52,22 @@ export const getEvents = async () => {
     } else {
       newurl = window.location.protocol + "//" + window.location.host;
       window.history.pushState("", "", newurl);
-    }
-  };
+    }}
 
   if (token) {
-    removeQuery();
-    const url = `https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
+    removeQuery(); 
+    const url =  `https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}` ;
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
       return result.events;
-    } else return null;
+    } else return null; 
   }
 };
-
-/**
- * Fetches the access token using the authorization code.
- * @param {string} code - The authorization code.
- * @returns {string} - The access token.
- */
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
-    `https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
+    `https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}` + '/' + encodeCode
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
@@ -79,27 +75,23 @@ const getToken = async (code) => {
   return access_token;
 };
 
-/**
- * Retrieves the access token from local storage or fetches a new one.
- * @returns {string} - The access token.
- */
 export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem('access_token');
+  const accessToken = localStorage.getItem('access_token'); //get the access token from local storage
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
-  if (!accessToken || tokenCheck.error) {
+  if (!accessToken || tokenCheck.error) { //if there is no access token or the token is invalid, get a new token
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
-    if (!code) {
-      const response = await fetch(
-        "https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+    if (!code) {            //if there is no code, redirect to the authorization URL
+      const response = await fetch(   
+        "https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" //replace YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT with the actual endpoint
       );
-      const result = await response.json();
+      const result = await response.json();   //get the authorization URL
       const { authUrl } = result;
-      return (window.location.href = authUrl);
+      return (window.location.href = authUrl);    //redirect to the authorization URL
     }
-    return code && getToken(code);
+    return code && getToken(code);    //if there is a code, get the token
   }
-  return accessToken;
+  return accessToken;     //if there is a token, return it
 };

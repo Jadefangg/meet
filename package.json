@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
-    "puppeteer": "^18.1.0"
+    "puppeteer": "^18.1.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
   }
 }

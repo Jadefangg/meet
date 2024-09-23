@@ -1,16 +1,14 @@
 // src/App.js
-
 import { useEffect, useState } from 'react';
 import CitySearch from './components/CitySearch';
 import CityEventsChart from './components/CityEventsChart';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
-
-import './App.css';
 import { InfoAlert } from './components/Alerts';
 import { WarningAlert } from './components/Alerts';
 import { ErrorAlert } from './components/Alerts';
+import './App.css';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);

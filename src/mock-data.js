@@ -87,7 +87,7 @@ const mockData=[
      "updated": "2020-05-27T12:01:32.356Z",
      "summary": "Learn JavaScript",
      "description": "Have you wondered how you can ask Google to show you the list of the top ten must-see places in London? And how Google presents you the list? How can you submit the details of an application? Well, JavaScript is doing these. :) \n\nJavascript offers interactivity to a dull, static website. Come, learn JavaScript with us and make those beautiful websites.",
-     "location": "London, UK",
+     "location": "Tokyo, JP",
      "creator": {
       "email": "fullstackwebdev@careerfoundry.com",
       "self": true
@@ -98,16 +98,16 @@ const mockData=[
      },
      "start": {
       "dateTime": "2020-05-21T16:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "Japan/Tokyo"
      },
      "end": {
       "dateTime": "2020-05-21T17:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "Japan/Tokyo"
      },
      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
      "originalStartTime": {
       "dateTime": "2020-05-21T16:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "Japan/Tokyo"
      },
      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
      "sequence": 0,

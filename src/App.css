@@ -20,12 +20,16 @@
 }
 
 ul {
+  color: purple;
+  font-family: monospace;
+  border: solid;
+  border-radius: 20px;
   padding: 10px;
   list-style: none;
 }
 
 p {
-  margin: 25px 0;
+  margin: 20px 0;
 }
 
 input[type="text"],
@@ -90,6 +94,7 @@ input[type="number"] {
 }
 
 .details-btn {
+  font-family: fantasy;
   position: absolute;
   right: 5px;
   bottom: 5px;
