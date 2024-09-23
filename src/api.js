@@ -83,7 +83,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {            //if there is no code, redirect to the authorization URL
       const response = await fetch(   
-        "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT" //replace YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT with the actual endpoint
+        "https://up9fx890pb.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" //replace YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT with the actual endpoint
       );
       const result = await response.json();   //get the authorization URL
       const { authUrl } = result;

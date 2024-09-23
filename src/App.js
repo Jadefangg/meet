@@ -50,7 +50,7 @@ const App = () => {
       </div>
       <CitySearch
         allLocations={allLocations}
-        setCurrentCity={setCurrentCity}
+        setCurrentCity={setCurrentCity} 
         setInfoAlert={setInfoAlert}
         setWarningAlert={setWarningAlert}
         setErrorAlert={setErrorAlert}
