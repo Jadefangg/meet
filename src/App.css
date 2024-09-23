@@ -92,9 +92,15 @@ input[type="number"] {
   border-radius: 14px;
   position: relative;
 }
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+
 
 .details-btn {
-  font-family: fantasy;
   position: absolute;
   right: 5px;
   bottom: 5px;

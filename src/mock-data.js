@@ -85,8 +85,8 @@ const mockData=[
      "htmlLink": "https://www.google.com/calendar/event?eid=NGVhaHM5Z2hraHJ2a2xkNzJob2d1OXBoM2VfMjAyMDA1MjFUMTQwMDAwWiBmdWxsc3RhY2t3ZWJkZXZAY2FyZWVyZm91bmRyeS5jb20",
      "created": "2020-05-19T19:17:46.000Z",
      "updated": "2020-05-27T12:01:32.356Z",
-     "summary": "Learn JavaScript",
-     "description": "Have you wondered how you can ask Google to show you the list of the top ten must-see places in London? And how Google presents you the list? How can you submit the details of an application? Well, JavaScript is doing these. :) \n\nJavascript offers interactivity to a dull, static website. Come, learn JavaScript with us and make those beautiful websites.",
+     "summary": "Learn Angular",
+     "description": "Have you wondered how you can ask Google to show you the list of the top ten must-see places in Tokyo? And how Google presents you the list? How can you submit the details of an application? Well, Angular is doing these. :) \n\nAngulr offers interactivity to a dull, static website. Come, learn Angular with us and make those beautiful websites.",
      "location": "Tokyo, JP",
      "creator": {
       "email": "fullstackwebdev@careerfoundry.com",
@@ -163,9 +163,9 @@ const mockData=[
      "htmlLink": "https://www.google.com/calendar/event?eid=NGVhaHM5Z2hraHJ2a2xkNzJob2d1OXBoM2VfMjAyMDA1MjNUMTQwMDAwWiBmdWxsc3RhY2t3ZWJkZXZAY2FyZWVyZm91bmRyeS5jb20",
      "created": "2020-05-19T19:17:46.000Z",
      "updated": "2020-05-27T12:01:32.356Z",
-     "summary": "Learn JavaScript",
-     "description": "Have you wondered how you can ask Google to show you the list of the top ten must-see places in London? And how Google presents you the list? How can you submit the details of an application? Well, JavaScript is doing these. :) \n\nJavascript offers interactivity to a dull, static website. Come, learn JavaScript with us and make those beautiful websites.",
-     "location": "London, UK",
+     "summary": "Learn Node",
+     "description": "Have you wondered how you can ask Google to show you the list of the top ten must-see places in San Francisco? And how Google presents you the list? How can you submit the details of an application? Well, Node.js is doing these. :) \n\nNode.js offers interactivity to a dull, static website. Come, learn Node.js with us and make those beautiful websites.",
+     "location": "San Francisco, CA",
      "creator": {
       "email": "fullstackwebdev@careerfoundry.com",
       "self": true
@@ -176,16 +176,16 @@ const mockData=[
      },
      "start": {
       "dateTime": "2020-05-23T16:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "North America/LosAngeles"
      },
      "end": {
       "dateTime": "2020-05-23T17:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "North America/LosAngeles"
      },
      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
      "originalStartTime": {
       "dateTime": "2020-05-23T16:00:00+02:00",
-      "timeZone": "Europe/Berlin"
+      "timeZone": "North America/LosAngeles"
      },
      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
      "sequence": 0,

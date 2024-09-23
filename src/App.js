@@ -8,6 +8,7 @@ import { extractLocations, getEvents } from './api';
 import { InfoAlert } from './components/Alerts';
 import { WarningAlert } from './components/Alerts';
 import { ErrorAlert } from './components/Alerts';
+import EventGenresChart from './components/EventGenresChart';
 import './App.css';
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
   //all the alerts are displayed in the alerts container.
   return (
     <div className="App">
+      <h1>Meet App</h1>
       <div className="alerts-container"> 
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
@@ -54,7 +56,10 @@ const App = () => {
         setErrorAlert={setErrorAlert}
       />
       <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />
+      <div className='charts-container'>
+        <EventGenresChart events={events} />
       <CityEventsChart allLocations={allLocations} events={events}/>
+      </div>
       <EventList events={events} />
     </div>
   );
